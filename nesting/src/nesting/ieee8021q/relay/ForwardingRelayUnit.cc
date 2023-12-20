@@ -131,45 +131,15 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
     }
 } */
 
-void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId) {
-    // Learning MAC port mappings
-    const auto& frame = packet->peekAtFront<EthernetMacHeader>();
-    learn(srcAddress, arrivalInterfaceId);
-    int destInterfaceId = fdb->getDestInterfaceId(destAddress, simTime());
-
-    //开始进行流处理与判断    得到地址
-
-    // Additional logic to check if source and destination addresses are the same
-     //增加修改测试
-    // New logic for stream processing
-    auto it = streamMap.begin();                         //这个流空间应该是一个全局变量，流空间遍历
-    if(streamMap != -1)                                  //流表不为空
-    {
-        for (auto it = streamMap.begin(); it != streamMap.end(); ++it) {      
-        if (it->second.source == srcAddress && it->second.destination == destAddress) {
-            // Found an existing stream with the same source and destination
-            EV_INFO << "Frame belongs to existing stream with ID " << it->second.streamID << std::endl;
-            // Do whatever you need to do with the existing stream
-            it->second.matchingIDs.insert(temporaryID);                  //如何将接收流标记为已经存储流，执行失败了
-            return;
-        }
-        //在Map表中没找到相同的流
-        else                                                             //这里写的有点点问题，函数逻辑上
-            tream newStream{srcAddress, destAddress, nextStreamID};
-            streamMap[nextStreamID] = newStream;
-            ++nextStreamID;
-    }
-    // 不存在流，创建一个新的流ID
-    else
-         Stream newStream{srcAddress, destAddress, nextStreamID};
-         streamMap[nextStreamID] = newStream;
-        // Increment the nextStreamID for the next stream
-         ++nextStreamID;
-    }
+ void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId) {
+    //Learning MAC port mappings
+    const auto& frame = packet->peekAtFront<EthernetMacHeader>();               
+    learn(frame->getSrc(), arrivalInterfaceId);                                //这里get了源地址
+    int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());//这里get了目的地址
     
-    EV_INFO << "Frame belongs to a new stream with ID " << nextStreamID << std::endl;
+    
 
-    // 继续原来的逻辑
+    //Routing entry available or not?
     if (destInterfaceId == -1) {
         EV_INFO << "No unicast forwarding entry for packet " << packet->getName()
                 << " found. Falling back to broadcast!" << std::endl;
@@ -180,7 +150,7 @@ void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId)
         packet->addTagIfAbsent<InterfaceReq>()->setInterfaceId(destInterfaceId);
         send(packet, gate("ifOut"));
     }
-}
+} 
 
 void ForwardingRelayUnit::learn(MacAddress srcAddr, int arrivalInterfaceId)
 {
