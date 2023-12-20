@@ -138,8 +138,6 @@ void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId)
     int destInterfaceId = fdb->getDestInterfaceId(destAddress, simTime());
 
     //开始进行流处理与判断    得到地址
-    MACAddress srcAddress = frame->getSrc();
-    MACAddress destAddress = frame->getDest();
 
     // Additional logic to check if source and destination addresses are the same
 
