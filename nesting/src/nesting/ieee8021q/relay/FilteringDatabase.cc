@@ -107,11 +107,12 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
     // Rules for individual addresses
     cXMLElementList individualAddresses = xml->getChildrenByTagName(
             "individualAddress");
-
+    
     for (auto individualAddress : individualAddresses) {
-
-        std::string macAddressStr = std::string(individualAddress->getAttribute("macAddress"));
-        if (macAddressStr.empty()) {
+    
+        std::string srcAddressStr = std::string(individualAddress->getAttribute("srcAddress"));   //存储源与目的地址；修改
+        std::string dstAddressStr = std::string(individualAddress->getAttribute("dstAddress"));   //
+        if (srcAddressStr.empty()|dstAddressStr.empty()) {                                        //修改
             throw cRuntimeError(
                     "individualAddress tag in forwarding database XML must have an "
                             "macAddress attribute");
@@ -135,10 +136,19 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
 
         // Create and insert entry for different individual address types
         if (vid == 0) {
-            MacAddress macAddress;
-            if (!macAddress.tryParse(macAddressStr.c_str())) {
-                throw new cRuntimeError("Cannot parse invalid Mac address.");
+            MacAddress srcAddress;                                                     //声明了一个名为源地址的Mac地址变量
+            MacAddress dstAddress;
+            if (!srcAddress.tryParse(srcAddressStr.c_str())) {                                  //如果尝试解析源地址失败
+                throw new cRuntimeError("Cannot parse invalid Src address.");
             }
+            if (!dstAddress.tryParse(dstAddressStr.c_str())) {
+                throw new cRuntimeError("Cannot parse invalid Dst address.");
+            }
+            std::string a = srcAddress.str();                                                //将源地址字符化，传递给a（好像没什么用  ）
+            std::string b = dstAddress.str();
+            flow f;
+            f.src = srcAddress;
+            f.dst = dstAddress;
             adminFdb.insert({macAddress, std::pair<simtime_t, std::vector<int>>(0, interfaceIds)});
         } else {
             // TODO

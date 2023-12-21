@@ -139,10 +139,10 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
     
     //这里从包里取下源地址与目的地址
     flow F;
-    F.id = frame->getSrc();                     ///这里是getsrc，我直接用来getid是不是没定义过；
+    F.id = frame->getSrc();                                  ///这里是getsrc，我直接用来getid是不是没定义过；getSrc()是不是要重写成getid（）
     F.dst = frame->getDest();
-    learn( F , arrivalInterfaceId);  
-    int destInterfaceId = fdb->getDestInterfaceId( F , simTime());
+    learn( F , arrivalInterfaceId);                         //这个learn里面的处理过程还有点不太懂；
+    int destInterfaceId = fdb->getDestInterfaceId( F , simTime());    //fdb是什么意思
 
     //Routing entry available or not?
     if (destInterfaceId == -1) {
