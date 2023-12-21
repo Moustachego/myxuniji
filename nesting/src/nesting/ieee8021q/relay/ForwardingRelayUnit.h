@@ -46,7 +46,7 @@ protected:
     virtual void processBroadcast(Packet* packet, int arrivalInterfaceId);
     virtual void processMulticast(Packet* packet, int arrivalInterfaceId);
     virtual void processUnicast(Packet* packet, int arrivalInterfaceId);
-    virtual void learn(MacAddress srcAddr, int arrivalInterfaceId);
+    virtual void learn(flow F, int arrivalInterfaceId);
 
 public:
     //TODO: Fix filtering database aging parameter!

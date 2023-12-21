@@ -29,12 +29,35 @@
 using namespace omnetpp;
 using namespace inet;
 
+struct flow{                  //定义flow结构体
+    MacAddress src;
+    MacAddress dst;
+    bool operator<(const flow& other) const{
+        return((src<other.src) || (src==other.src&&dst<other.dst));
+    }
+    bool operator>(const flow& other) const{
+        return((src>other.src) || (src==other.src&&dst>other.dst));
+    }
+    bool operator==(const flow& other) const{
+        return(src==other.src && dst==other.dst);
+    }
+    bool operator!=(const flow& other) const{
+        return(src!=other.src || dst!=other.dst);
+    }
+    flow& operator=(const flow& other) {
+        src=other.src;
+        dst=other.dst;
+        return *this;
+    }
+};
+
+
 //added hash function for MacAddress (required for map)
 namespace std {
-template<> struct hash<MacAddress> {
-    size_t operator()(MacAddress const& mac) const noexcept
+template<> struct hash<flow> {
+    size_t operator()(flow const& F) const noexcept
     {
-        return std::hash<string> { }(mac.str());
+        return std::hash<string> { }(F.src.str()+F.dst.str());
     }
 };
 }
@@ -46,8 +69,11 @@ namespace nesting {
  */
 class FilteringDatabase: public cSimpleModule {
 private:
-    std::unordered_map<MacAddress, std::pair<simtime_t, std::vector<int>>> adminFdb;
-    std::unordered_map<MacAddress, std::pair<simtime_t, std::vector<int>>> operFdb;
+    //std::unordered_map<MacAddress, std::pair<simtime_t, std::vector<int>>> adminFdb;
+    //std::unordered_map<MacAddress, std::pair<simtime_t, std::vector<int>>> operFdb;
+
+    std::unordered_map<flow, std::pair<simtime_t, std::vector<int>>> adminFdb2;
+    std::unordered_map<flow, std::pair<simtime_t, std::vector<int>>> operFdb2;
 
     std::set<int> blockedPorts;
 
@@ -76,11 +102,12 @@ public:
 
     virtual void loadDatabase(cXMLElement* fdb);
 
-    virtual int getDestInterfaceId(MacAddress macAddress, simtime_t curTS);
+    virtual int getDestInterfaceId(flow F, simtime_t curTS);
 
-    virtual std::vector<int> getDestInterfaceIds(MacAddress macAddress, simtime_t curTS);
+    //virtual std::vector<int> getDestInterfaceIds(flow F, simtime_t curTS);
+    virtual std::vector<int> getDestInterfaceIds(flow F, simtime_t curTS);
 
-    virtual void insert(MacAddress macAddress, simtime_t curTS, int interfaceId);
+    virtual void insert(flow F, simtime_t curTS, int interfaceId);
 
     virtual bool isInterfaceBlocked(int interfaceId);
 };

@@ -25,6 +25,7 @@ namespace nesting {
 
 Define_Module(FilteringDatabase);
 
+
 FilteringDatabase::FilteringDatabase()
 {
     this->agingActive = false;
@@ -43,7 +44,7 @@ FilteringDatabase::~FilteringDatabase()
 
 void FilteringDatabase::clearAdminFdb()
 {
-    adminFdb.clear();
+    adminFdb2.clear();
 }
 void FilteringDatabase::initialize(int stage) {
     if (stage == INITSTAGE_LOCAL) {
@@ -95,7 +96,7 @@ void FilteringDatabase::loadDatabase(cXMLElement* xml) {
         }
     }
 
-    operFdb.swap(adminFdb);
+    operFdb2.swap(adminFdb2);
     clearAdminFdb();
 }
 
@@ -146,10 +147,11 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
             }
             std::string a = srcAddress.str();                                                //将源地址字符化，传递给a（好像没什么用  ）
             std::string b = dstAddress.str();
-            flow f;
-            f.src = srcAddress;
-            f.dst = dstAddress;
-            adminFdb.insert({macAddress, std::pair<simtime_t, std::vector<int>>(0, interfaceIds)});
+            //如何才能将流f定义成一个结构体，包含src、dst的数据
+            flow F;
+            F.src = srcAddress;
+            F.dst = dstAddress;
+            adminFdb2.insert({ F, std::pair<simtime_t, std::vector<int>>(0, interfaceIds)});
         } else {
             // TODO
             throw cRuntimeError(
@@ -161,12 +163,14 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
     cXMLElementList multicastAddresses = xml->getChildrenByTagName(
             "multicastAddress");
     for (auto multicastAddress : multicastAddresses) {
-        std::string macAddressStr = std::string(
-                multicastAddress->getAttribute("macAddress"));
-        if (macAddressStr.empty()) {
+        std::string srcAddressStr = std::string(
+                multicastAddress->getAttribute("srcAddress"));
+        std::string dstAddressStr = std::string(
+                multicastAddress->getAttribute("dstAddress"));
+        if (srcAddressStr.empty()|dstAddressStr.empty()) {
             throw cRuntimeError(
                     "multicastAddress tag in forwarding database XML must have an "
-                            "macAddress attribute");
+                            "Address attribute");
         }
 
         if (!multicastAddress->getAttribute("ports")) {
@@ -198,15 +202,20 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
 
         // Create and insert entry for different individual address types
         if (vid == 0) {
-            MacAddress macAddress;
-            if (!macAddress.tryParse(macAddressStr.c_str())) {
+            flow F;
+            MacAddress srcAddress;
+            srcAddress.tryParse(srcAddressStr.c_str());
+            MacAddress dstAddress;
+            if (!dstAddress.tryParse(dstAddressStr.c_str())) {
                 throw new cRuntimeError("Cannot parse invalid Mac address.");
             }
-            if (!macAddress.isMulticast()) {
+            if (!dstAddress.isMulticast()) {
                 throw new cRuntimeError(
                         "Mac address is not a Multicast address.");
             }
-            adminFdb.insert({macAddress, std::pair<simtime_t, std::vector<int>>(0, destInterfaces)});
+            F.src = srcAddress;
+            F.dst = dstAddress;
+            adminFdb2.insert({F, std::pair<simtime_t, std::vector<int>>(0, destInterfaces)});
         } else {
             // TODO
             throw cRuntimeError(
@@ -231,20 +240,20 @@ void FilteringDatabase::handleMessage(cMessage *msg) {
     throw cRuntimeError("Must not receive messages.");
 }
 
-void FilteringDatabase::insert(MacAddress macAddress, simtime_t curTS, int interfaceId) {
+void FilteringDatabase::insert(flow F, simtime_t curTS, int interfaceId) {
     std::vector<int> tmp;
     tmp.insert(tmp.begin(), 1, interfaceId);
-    operFdb[macAddress] = std::pair<simtime_t, std::vector<int>>(curTS, tmp);
+    operFdb2[F] = std::pair<simtime_t, std::vector<int>>(curTS, tmp);
 }
 
-int FilteringDatabase::getDestInterfaceId(MacAddress macAddress, simtime_t curTS) {
+int FilteringDatabase::getDestInterfaceId(flow F, simtime_t curTS) {
     simtime_t ts;
     std::vector<int> port;
 
-    auto it = operFdb.find(macAddress);
+    auto it = operFdb2.find(F);
 
     //is element available?
-    if (it != operFdb.end()) {
+    if (it != operFdb2.end()) {
         ts = it->second.first;
         port = it->second.second;
         // return if mac address belongs to multicast
@@ -253,38 +262,42 @@ int FilteringDatabase::getDestInterfaceId(MacAddress macAddress, simtime_t curTS
         }
         // static entries (ts == 0) do not age
         if (!agingActive || (ts == 0 || curTS - ts < agingThreshold)) {
-            operFdb[macAddress] = std::pair<simtime_t, std::vector<int>>(curTS,
+            operFdb2[F] = std::pair<simtime_t, std::vector<int>>(curTS,
                     port);
             return port.at(0);
         } else {
-            operFdb.erase(macAddress);
+            operFdb2.erase(F);
         }
     }
 
     return -1;
 }
 
-std::vector<int> FilteringDatabase::getDestInterfaceIds(MacAddress macAddress,
-        simtime_t curTS) {
+std::vector<int> FilteringDatabase::getDestInterfaceIds(flow F,simtime_t curTS) {
     simtime_t ts;
     std::vector<int> ports;
 
-    if (!macAddress.isMulticast()) {
+    /*if (!macAddress.isMulticast()) {
+        throw cRuntimeError("Expected multicast MAC address!");
+    }
+    */
+        if (!F.dst.isMulticast()) {
         throw cRuntimeError("Expected multicast MAC address!");
     }
 
-    auto it = operFdb.find(macAddress);
+    //auto it = operFdb.find(macAddress);
+    auto it = operFdb2.find(F);
 
     //is element available?
-    if (it != operFdb.end()) {
+    if (it != operFdb2.end()) {
         ts = it->second.first;
         ports = it->second.second;
         // static entries (ts == 0) do not age
         if (!agingActive || (ts == 0 || curTS - ts < agingThreshold)) {
-            operFdb[macAddress] = std::pair<simtime_t, std::vector<int>>(curTS, ports);
+            operFdb2[F] = std::pair<simtime_t, std::vector<int>>(curTS, ports);
             return ports;
         } else {
-            operFdb.erase(macAddress);
+            operFdb2.erase(F);
         }
 
     }
