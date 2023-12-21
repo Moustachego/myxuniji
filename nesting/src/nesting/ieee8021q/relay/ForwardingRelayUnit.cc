@@ -138,7 +138,7 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
     //int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());//这里get了目的地址 fdb到底表示什么意思
     
     //这里从包里取下源地址与目的地址
-    flow F；
+    flow F;
     F.id = frame->getSrc();                     ///这里是getsrc，我直接用来getid是不是没定义过；
     F.dst = frame->getDest();
     learn( F , arrivalInterfaceId);  
