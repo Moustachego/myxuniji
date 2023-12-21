@@ -133,11 +133,16 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
 
  void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId) {
     //Learning MAC port mappings
-    const auto& frame = packet->peekAtFront<EthernetMacHeader>();               
-    learn(frame->getSrc(), arrivalInterfaceId);                                //这里get了源地址
-    int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());//这里get了目的地址
+    const auto& frame = packet->peekAtFront<EthernetMacHeader>();              //首先把包取下来，用帧的形式保存           
+    //learn(frame->getSrc(), arrivalInterfaceId);                                //这里get了源地址
+    //int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());//这里get了目的地址 fdb到底表示什么意思
     
-    
+    //这里从包里取下源地址与目的地址
+    flow F；
+    F.id = frame->getSrc();                     ///这里是getsrc，我直接用来getid是不是没定义过；
+    F.dst = frame->getDest();
+    learn( F , arrivalInterfaceId);  
+    int destInterfaceId = fdb->getDestInterfaceId( F , simTime());
 
     //Routing entry available or not?
     if (destInterfaceId == -1) {
@@ -152,9 +157,9 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
     }
 } 
 
-void ForwardingRelayUnit::learn(MacAddress srcAddr, int arrivalInterfaceId)
+void ForwardingRelayUnit::learn(flow F, int arrivalInterfaceId)
 {
-    fdb->insert(srcAddr, simTime(), arrivalInterfaceId);
+    fdb->insert( F , simTime(), arrivalInterfaceId);                         //这个insert函数没找到 
 }
 
 } // namespace nesting
