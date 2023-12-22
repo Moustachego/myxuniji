@@ -41,7 +41,7 @@ private:
     IInterfaceTable *ifTable;
 protected:
     virtual void initialize(int stage) override;
-    virtual int numInitStages() const override { return NUM_INIT_STAGES; }
+    virtual int numInitStages() const override { return NUM_INIT_STAGES; }   ///测试提交
     virtual void handleMessage(cMessage* msg);
     virtual void processBroadcast(Packet* packet, int arrivalInterfaceId);
     virtual void processMulticast(Packet* packet, int arrivalInterfaceId);
