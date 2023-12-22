@@ -35,8 +35,8 @@ namespace nesting {
  */
 class ForwardingRelayUnit: public cSimpleModule {
 private:
-    FilteringDatabase* fdb;
-    int numberOfPorts;
+    FilteringDatabase* fdb;                                       //原来是filterDatabase的意思 ，存储一个数据库
+    int numberOfPorts;                                            //存储一个端口号 
     simtime_t fdbAgingThreshold = 1000; //TODO: Create parameter for filtering database aging
     IInterfaceTable *ifTable;
 protected:

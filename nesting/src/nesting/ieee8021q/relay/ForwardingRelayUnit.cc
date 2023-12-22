@@ -82,7 +82,7 @@ void ForwardingRelayUnit::processBroadcast(Packet* packet, int arrivalInterfaceI
 void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceId) {
     const auto& frame = packet->peekAtFront<EthernetMacHeader>();
     flow F;
-    F.src = frame->getSrc();
+    F.src = frame->getSrc();                                     
     F.dst = frame->getDest();
     std::vector<int> destInterfaces = fdb->getDestInterfaceIds(F, simTime());
 
@@ -141,11 +141,11 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
     //int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());//这里get了目的地址 fdb到底表示什么意思
     
     //这里从包里取下源地址与目的地址
-    flow F;                                                   //这里没有定义flow类型
+    flow F;                                                  
     F.src = frame->getSrc();                                  ///这里是getsrc，我直接用来getid是不是没定义过；getSrc()是不是要重写成getid（）
     F.dst = frame->getDest();
-    learn( F , arrivalInterfaceId);                         //这个learn里面的处理过程还有点不太懂；
-    int destInterfaceId = fdb->getDestInterfaceId( F , simTime());    //fdb是什么意思
+    learn( F , arrivalInterfaceId);                           //这个learn里面的处理过程还有点不太懂；
+    int destInterfaceId = fdb->getDestInterfaceId( F , simTime());    
 
     //Routing entry available or not?
     if (destInterfaceId == -1) {                                    //转发动作
