@@ -1,0 +1,154 @@
+<?xml version="1.0" ?>
+<schedules>
+	<defaultcycle>250us</defaultcycle>
+	<host name="ES1">
+		<cycle>250us</cycle>
+		<entry>
+			<start>107us</start>
+			<queue>4</queue>
+			<dest>00:00:00:00:00:09</dest>
+			<size>220B</size>
+			<flowId>1</flowId>
+		</entry>
+	</host>
+	<host name="ES3">
+		<cycle>1000us</cycle>
+		<entry>
+			<start>108us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:09</dest>
+			<size>220B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="ES4">
+		<cycle>250us</cycle>
+		<entry>
+			<start>52us</start>
+			<queue>4</queue>
+			<dest>00:00:00:00:00:09</dest>
+			<size>345B</size>
+			<flowId>3</flowId>
+		</entry>
+	</host>
+	<host name="ES5">
+		<cycle>250us</cycle>
+		<entry>
+			<start>16us</start>
+			<queue>4</queue>
+			<dest>00:00:00:00:00:09</dest>
+			<size>345B</size>
+			<flowId>4</flowId>
+		</entry>
+	</host>	
+	<host name="ES7">
+		<cycle>1000us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:09</dest>
+			<size>470B</size>
+			<flowId>5</flowId>
+		</entry>
+	</host>	
+	<switch name="SW1">
+		<port id="0">
+			<schedule cycleTime="250us">
+				<entry>
+					<length>134us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+				<entry>
+					<length>23us</length>
+					<bitvector>10010000</bitvector>
+				</entry>
+				<entry>
+					<length>93us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+			</schedule>
+		</port>
+	</switch>
+	<switch name="SW2">
+		<port id="1">
+			<schedule cycleTime="250us">
+				<entry>
+					<length>89us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+				<entry>
+					<length>33us</length>
+					<bitvector>10010000</bitvector>
+				</entry>
+				<entry>
+					<length>13us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+				<entry>
+					<length>23us</length>
+					<bitvector>10000000</bitvector>
+				</entry>
+				<entry>
+					<length>3us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+				<entry>
+					<length>26us</length>
+					<bitvector>10010000</bitvector>
+				</entry>
+				<entry>
+					<length>63us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+			</schedule>
+		</port>
+	</switch>
+	<switch name="SW3">
+		<port id="0">
+			<schedule cycleTime="250us">
+				<entry>
+					<length>53us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+				<entry>
+					<length>33us</length>
+					<bitvector>10010000</bitvector>
+				</entry>
+				<entry>
+					<length>164us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+			</schedule>
+		</port>
+	</switch>
+	<switch name="SW4">
+		<port id="1">
+			<schedule cycleTime="250us">
+				<entry>
+					<length>47us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+				<entry>
+					<length>43us</length>
+					<bitvector>10000000</bitvector>
+				</entry>
+				<entry>
+					<length>72us</length>
+					<bitvector>10010000</bitvector>
+				</entry>
+				<entry>
+					<length>26us</length>
+					<bitvector>10000000</bitvector>
+				</entry>
+				<entry>
+					<length>29us</length>
+					<bitvector>10010000</bitvector>
+				</entry>
+				<entry>
+					<length>33us</length>
+					<bitvector>10000001</bitvector>
+				</entry>
+			</schedule>
+		</port>
+	</switch>
+</schedules>

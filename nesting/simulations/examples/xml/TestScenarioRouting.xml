@@ -1,0 +1,33 @@
+<filteringDatabases>
+	<filteringDatabase id="switchA">
+	    <static>
+	        <forward>
+	        	<!-- Forward packets addressed to robotArm to switchB -->
+	        	<individualAddress srcAddress="00-00-00-00-00-01" dstAddress="00-00-00-00-00-04" port="3" />
+	        	<!-- Forward packets addressed to backupServer to switchB -->
+	        	<individualAddress srcAddress="00-00-00-00-00-02" dstAddress="00-00-00-00-00-05" port="3" />
+				<!-- Forward packets addressed to backupServer to switchC -->
+				<individualAddress srcAddress="00-00-00-00-00-03" dstAddress="00-00-00-00-00-05" port="4" />
+	        </forward>
+	    </static>
+	</filteringDatabase>
+	<filteringDatabase id="switchB">
+	    <static>
+	        <forward>
+	        	<!-- Forward packets addressed to robotArm to robotArm -->
+	        	<individualAddress srcAddress="00-00-00-00-00-01" dstAddress="00-00-00-00-00-04" port="0" />
+	        	<!-- Forward packets addressed to backupServer to backupServer -->
+	        	<individualAddress srcAddress="00-00-00-00-00-02" dstAddress="00-00-00-00-00-05" port="1" />
+				<individualAddress srcAddress="00-00-00-00-00-03" dstAddress="00-00-00-00-00-05" port="1" />
+	        </forward>
+	    </static>
+	</filteringDatabase>
+	<filteringDatabase id="switchC">
+		<static>
+			<forward>
+	        	<!-- Forward packets addressed to switchC to switchB -->
+				<individualAddress srcAddress="00-00-00-00-00-03" dstAddress="00-00-00-00-00-05" port="1" />
+			</forward>
+		</static>
+	</filteringDatabase>
+</filteringDatabases>

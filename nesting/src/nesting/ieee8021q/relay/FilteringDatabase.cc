@@ -26,7 +26,7 @@ namespace nesting {
 Define_Module(FilteringDatabase);
 
 
-FilteringDatabase::FilteringDatabase()
+FilteringDatabase::FilteringDatabase()                  //这里
 {
     this->agingActive = false;
     this->agingThreshold = 0;
@@ -44,15 +44,19 @@ FilteringDatabase::~FilteringDatabase()
 
 void FilteringDatabase::clearAdminFdb()
 {
+//    adminFdb.clear();
     adminFdb2.clear();
 }
-void FilteringDatabase::initialize(int stage) {
+void FilteringDatabase::initialize(int stage) {                            //这里
     if (stage == INITSTAGE_LOCAL) {
         ifTable = check_and_cast<IInterfaceTable*>(getModuleByPath(par("interfaceTableModule")));
         WATCH_SET(blockedPorts);
     } else if (stage == INITSTAGE_LINK_LAYER) {
-        cXMLElement* fdb = par("database");
-        loadDatabase(fdb);
+        EV_INFO << "test2"<< std::endl;                                   //现在在这里卡住？
+        cXMLElement* fdb = par("database");  
+        EV_INFO << "fdb"  << fdb << std::endl;                           //这个fdb每次都会变是什么情况                            
+        loadDatabase(fdb);                                                 //进这里  //这里有问题
+
     }
 }
 
@@ -63,6 +67,7 @@ int FilteringDatabase::numInitStages() const {
 void FilteringDatabase::loadDatabase(cXMLElement* xml) {
     std::string switchName = this->getModuleByPath(par("switchModule"))->getFullName();
     cXMLElement* fdb;
+    EV_INFO << "fdb2"  << fdb << std::endl;
     //TODO this bool can probably be refactored to a nullptr check
     bool databaseFound = false;
     //try to extract the part of the filteringDatabase xml belonging to this module
@@ -73,72 +78,89 @@ void FilteringDatabase::loadDatabase(cXMLElement* xml) {
             break;
         }
     }
-
+    EV_INFO << "fdb3"  << fdb << std::endl;
     //only continue if a filtering database was found for this switch
     if (!databaseFound) {
-        return;
+        return ;                                           //这里加了一个false //加false就错误了
     }
 
     // Get static rules from XML file
     cXMLElement* staticRules = fdb->getFirstChildWithTag("static");
-
+    EV_INFO << "staticRules"  << staticRules << std::endl;
     if (staticRules != nullptr) {
         clearAdminFdb();
 
         cXMLElement* forwardingXml = staticRules->getFirstChildWithTag("forward");
+        EV_INFO << "forwardingXml"  << forwardingXml << std::endl;
         if (forwardingXml != nullptr) {
-            this->parseEntries(forwardingXml);
+            EV_INFO << "test3" << std::endl;
+            this->parseEntries(forwardingXml);                   //进这里 没出来
         }
 
         cXMLElement* blockedPortsXml = staticRules->getFirstChildWithTag("blockedPorts");
+        EV_INFO << "blockedPortsXml"  << blockedPortsXml << std::endl;          //这里没打印
         if (blockedPortsXml != nullptr) {
-            this->parseBlockedPorts(blockedPortsXml);
+            this->parseBlockedPorts(blockedPortsXml);                    //进这里
         }
     }
-
     operFdb2.swap(adminFdb2);
+//    operFdb.swap(adminFdb);
     clearAdminFdb();
 }
 
-void FilteringDatabase::parseEntries(cXMLElement* xml) {
+void FilteringDatabase::parseEntries(cXMLElement* xml) {                            //解析条目
     // If present get rules from XML file
     if (xml == nullptr) {
         throw new cRuntimeError("Illegal xml input");
     }
     // Rules for individual addresses
-    cXMLElementList individualAddresses = xml->getChildrenByTagName(
+    cXMLElementList individualAddresses = xml->getChildrenByTagName(                 //xml元素表获取单播地址
             "individualAddress");
-    
-    for (auto individualAddress : individualAddresses) {
-    
-        std::string srcAddressStr = std::string(individualAddress->getAttribute("srcAddress"));   //存储源与目的地址；修改
+    EV_INFO << "test4" << std::endl;
+    for (auto individualAddress : individualAddresses) {                             //单播地址遍历？
+        EV_INFO << "test5" << std::endl;
+//        std::string macAddressStr = std::string(individualAddress->getAttribute("macAddress"));  //执行到这里就执行不下去了，应该就是这里的问题？
+        std::string srcAddressStr = std::string(individualAddress->getAttribute("srcAddress"));   //存储源与目的地址；
         std::string dstAddressStr = std::string(individualAddress->getAttribute("dstAddress"));   //
-        if (srcAddressStr.empty()|dstAddressStr.empty()) {                                        //修改
-            throw cRuntimeError(
-                    "individualAddress tag in forwarding database XML must have an "
-                            "macAddress attribute");
+        //如何输出这个目的地址与源地址
+        EV_INFO << "test6" << std::endl;
+        EV_INFO << "srcAddressStr"<< srcAddressStr << std::endl;
+        if (srcAddressStr.empty()|dstAddressStr.empty()) {                                        //源与目的为空
+                    throw cRuntimeError(
+                            "individualAddress tag in forwarding database XML must have an "
+                                    "macAddress attribute");
         }
+//        if (macAddressStr.empty()) {
+//            throw cRuntimeError(
+//                    "individualAddress tag in forwarding database XML must have an "
+//                            "macAddress attribute");
+//        }
 
-        if (!individualAddress->getAttribute("port")) {
+        if (!individualAddress->getAttribute("port")) {                                          //单播端口不为空
             throw cRuntimeError(
                     "individualAddress tag in forwarding database XML must have an "
                             "port attribute");
         }
 
-        std::vector<int> interfaceIds;
-        int port = atoi(individualAddress->getAttribute("port"));
-        int interfaceId = ifTable->getInterface(port)->getInterfaceId();
-        interfaceIds.insert(interfaceIds.begin(), 1, interfaceId);
+        std::vector<int> interfaceIds;                                                  //接口ID
+        int port = atoi(individualAddress->getAttribute("port"));                       //读取端口信息
+        int interfaceId = ifTable->getInterface(port)->getInterfaceId();                //// 通过端口信息获取对应接口的ID
+//        interfaceIds.insert(interfaceIds.begin(), 1, port);
+        interfaceIds.insert(interfaceIds.begin(), 1, interfaceId);                      //将接口ID插入到vector的开头，初始值为1
 
-        uint8_t vid = 0;
+        uint8_t vid = 0;                                                                //创建一个vid
         if (individualAddress->getAttribute("vid"))
             vid = static_cast<uint8_t>(atoi(
                     individualAddress->getAttribute("vid")));
 
         // Create and insert entry for different individual address types
         if (vid == 0) {
-            MacAddress srcAddress;                                                     //声明了一个名为源地址的Mac地址变量
+//            MacAddress macAddress;
+            MacAddress srcAddress;                                                  //声明了一个名为源地址的Mac地址变量
             MacAddress dstAddress;
+//            if (!macAddress.tryParse(macAddressStr.c_str())) {
+//                throw new cRuntimeError("Cannot parse invalid Mac address.");
+//            }
             if (!srcAddress.tryParse(srcAddressStr.c_str())) {                                  //如果尝试解析源地址失败
                 throw new cRuntimeError("Cannot parse invalid Src address.");
             }
@@ -147,11 +169,11 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
             }
             std::string a = srcAddress.str();                                                //将源地址字符化，传递给a（好像没什么用  ）
             std::string b = dstAddress.str();
-            //如何才能将流f定义成一个结构体，包含src、dst的数据
-            flow F;
-            F.src = srcAddress;
-            F.dst = dstAddress;
-            adminFdb2.insert({ F, std::pair<simtime_t, std::vector<int>>(0, interfaceIds)});
+            flow f;
+            f.src = srcAddress;
+            f.dst = dstAddress;
+            adminFdb2.insert({f, std::pair<simtime_t, std::vector<int>>(0, interfaceIds)});
+//            adminFdb.insert({macAddress, std::pair<simtime_t, std::vector<int>>(0, interfaceIds)});
         } else {
             // TODO
             throw cRuntimeError(
@@ -163,14 +185,16 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
     cXMLElementList multicastAddresses = xml->getChildrenByTagName(
             "multicastAddress");
     for (auto multicastAddress : multicastAddresses) {
-        std::string srcAddressStr = std::string(
-                multicastAddress->getAttribute("srcAddress"));
         std::string dstAddressStr = std::string(
                 multicastAddress->getAttribute("dstAddress"));
-        if (srcAddressStr.empty()|dstAddressStr.empty()) {
+        std::string srcAddressStr = std::string(
+                multicastAddress->getAttribute("srcAddress"));
+//        std::string macAddressStr = std::string(
+//                multicastAddress->getAttribute("macAddress"));
+        if (dstAddressStr.empty()) {
             throw cRuntimeError(
                     "multicastAddress tag in forwarding database XML must have an "
-                            "Address attribute");
+                            "macAddress attribute");
         }
 
         if (!multicastAddress->getAttribute("ports")) {
@@ -202,7 +226,7 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
 
         // Create and insert entry for different individual address types
         if (vid == 0) {
-            flow F;
+            flow f;
             MacAddress srcAddress;
             srcAddress.tryParse(srcAddressStr.c_str());
             MacAddress dstAddress;
@@ -213,9 +237,18 @@ void FilteringDatabase::parseEntries(cXMLElement* xml) {
                 throw new cRuntimeError(
                         "Mac address is not a Multicast address.");
             }
-            F.src = srcAddress;
-            F.dst = dstAddress;
-            adminFdb2.insert({F, std::pair<simtime_t, std::vector<int>>(0, destInterfaces)});
+            f.src = srcAddress;
+            f.dst = dstAddress;
+//            MacAddress macAddress;
+//            if (!macAddress.tryParse(macAddressStr.c_str())) {
+//                throw new cRuntimeError("Cannot parse invalid Mac address.");
+//            }
+//            if (!macAddress.isMulticast()) {
+//                throw new cRuntimeError(
+//                        "Mac address is not a Multicast address.");
+//            }
+//            adminFdb.insert({macAddress, std::pair<simtime_t, std::vector<int>>(0, destInterfaces)});
+            adminFdb2.insert({f, std::pair<simtime_t, std::vector<int>>(0, destInterfaces)});
         } else {
             // TODO
             throw cRuntimeError(
@@ -240,64 +273,78 @@ void FilteringDatabase::handleMessage(cMessage *msg) {
     throw cRuntimeError("Must not receive messages.");
 }
 
-void FilteringDatabase::insert(flow F, simtime_t curTS, int interfaceId) {
+//void FilteringDatabase::insert(MacAddress macAddress, simtime_t curTS, int interfaceId) {
+void FilteringDatabase::insert(flow f, simtime_t curTS, int interfaceId) {
     std::vector<int> tmp;
     tmp.insert(tmp.begin(), 1, interfaceId);
-    operFdb2[F] = std::pair<simtime_t, std::vector<int>>(curTS, tmp);
+//    operFdb[macAddress] = std::pair<simtime_t, std::vector<int>>(curTS, tmp);
+    operFdb2[f] = std::pair<simtime_t, std::vector<int>>(curTS, tmp);
 }
 
-int FilteringDatabase::getDestInterfaceId(flow F, simtime_t curTS) {
+//int FilteringDatabase::getDestInterfaceId(MacAddress macAddress, simtime_t curTS) {
+int FilteringDatabase::getDestInterfaceId(flow f, simtime_t curTS) {
     simtime_t ts;
     std::vector<int> port;
 
-    auto it = operFdb2.find(F);
-
+//    auto it = operFdb.find(macAddress);
+    auto it = operFdb2.find(f);
+    std::string srcAddressStr = std::string(f.src.str());
+    std::string dstAddressStr = std::string(f.dst.str());
     //is element available?
+//    if (it != operFdb.end()) {
     if (it != operFdb2.end()) {
         ts = it->second.first;
         port = it->second.second;
         // return if mac address belongs to multicast
         if (port.size() != 1) {
-            return -1;
+            return -1;                                //这个return可能有问题
         }
         // static entries (ts == 0) do not age
         if (!agingActive || (ts == 0 || curTS - ts < agingThreshold)) {
-            operFdb2[F] = std::pair<simtime_t, std::vector<int>>(curTS,
+            operFdb2[f] = std::pair<simtime_t, std::vector<int>>(curTS,
                     port);
+//            operFdb[macAddress] = std::pair<simtime_t, std::vector<int>>(curTS,
+//                    port);
             return port.at(0);
         } else {
-            operFdb2.erase(F);
+            operFdb2.erase(f);
+//            operFdb.erase(macAddress);
         }
     }
 
-    return -1;
+    return -1;                                      //这个return可能有问题
 }
 
-std::vector<int> FilteringDatabase::getDestInterfaceIds(flow F,simtime_t curTS) {
+//std::vector<int> FilteringDatabase::getDestInterfaceIds(MacAddress macAddress,
+//        simtime_t curTS) {
+std::vector<int> FilteringDatabase::getDestInterfaceIds(flow f,
+        simtime_t curTS) {
     simtime_t ts;
     std::vector<int> ports;
 
-    /*if (!macAddress.isMulticast()) {
-        throw cRuntimeError("Expected multicast MAC address!");
-    }
-    */
-        if (!F.dst.isMulticast()) {
+//    if (!macAddress.isMulticast()) {
+//        throw cRuntimeError("Expected multicast MAC address!");
+//    }
+    if (!f.dst.isMulticast()) {
         throw cRuntimeError("Expected multicast MAC address!");
     }
 
     //auto it = operFdb.find(macAddress);
-    auto it = operFdb2.find(F);
+    auto it = operFdb2.find(f);
 
     //is element available?
+    //if (it != operFdb.end()) {
     if (it != operFdb2.end()) {
         ts = it->second.first;
         ports = it->second.second;
         // static entries (ts == 0) do not age
         if (!agingActive || (ts == 0 || curTS - ts < agingThreshold)) {
-            operFdb2[F] = std::pair<simtime_t, std::vector<int>>(curTS, ports);
+//            operFdb[macAddress] = std::pair<simtime_t, std::vector<int>>(curTS, ports);
+            operFdb2[f] = std::pair<simtime_t, std::vector<int>>(curTS, ports);
             return ports;
         } else {
-            operFdb2.erase(F);
+//            operFdb.erase(macAddress);
+            operFdb2.erase(f);
         }
 
     }

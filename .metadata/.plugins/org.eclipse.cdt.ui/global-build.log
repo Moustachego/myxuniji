@@ -1,0 +1,540 @@
+19:17:55 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn/omnetpp-5.6.1/lib
+Building...
+inet/applications/base/ApplicationBase.cc
+inet/applications/base/ApplicationPacketSerializer.cc
+inet/applications/dhcp/DhcpClient.cc
+inet/applications/dhcp/DhcpServer.cc
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpClient.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationBase.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpClient.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationBase.o' failed
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpServer.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpServer.o] Error 1
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+Makefile:6: recipe for target 'all' failed
+make: *** [all] Error 2
+"make MODE=release -j4 all" terminated with exit code 2. Build might be incomplete.
+19:17:56 **** Incremental Build of configuration gcc-release for project nesting ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+nesting/ieee8021q/relay/FilteringDatabase.cc
+In file included from nesting/ieee8021q/relay/FilteringDatabase.cc:16:
+./nesting/ieee8021q/relay/FilteringDatabase.h:95:18: warning: 'handleMessage' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void handleMessage(cMessage* msg);
+                 ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/csimplemodule.h:111:18: note: overridden virtual function is here
+    virtual void handleMessage(cMessage *msg);
+                 ^
+1 warning generated.
+Creating shared library: ../out/clang-release/src/libnesting.so
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+cd simulations && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+19:18:04 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn/omnetpp-5.6.1/lib
+Building...
+inet/applications/base/ApplicationBase.cc
+inet/applications/base/ApplicationPacketSerializer.cc
+inet/applications/dhcp/DhcpClient.cc
+inet/applications/dhcp/DhcpServer.cc
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpClient.o' failed
+make[1]: *** Waiting for unfinished jobs....
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpClient.o] Error 1
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpServer.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpServer.o] Error 1
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationBase.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationBase.o' failed
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+make: *** [all] Error 2
+Makefile:6: recipe for target 'all' failed
+"make MODE=release -j4 all" terminated with exit code 2. Build might be incomplete.
+19:18:06 **** Incremental Build of configuration gcc-release for project nesting ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+cd simulations && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+19:18:47 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn/omnetpp-5.6.1/lib
+Building...
+inet/applications/base/ApplicationBase.cc
+inet/applications/base/ApplicationPacketSerializer.cc
+inet/applications/dhcp/DhcpServer.cc
+inet/applications/dhcp/DhcpClient.cc
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationBase.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpServer.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpClient.o' failed
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+make[1]: *** Waiting for unfinished jobs....
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationBase.o] Error 1
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpServer.o] Error 1
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpClient.o] Error 1
+Makefile:6: recipe for target 'all' failed
+make: *** [all] Error 2
+"make MODE=release -j4 all" terminated with exit code 2. Build might be incomplete.
+19:18:48 **** Incremental Build of configuration gcc-release for project nesting ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+nesting/ieee8021q/relay/FilteringDatabase.cc
+In file included from nesting/ieee8021q/relay/FilteringDatabase.cc:16:
+./nesting/ieee8021q/relay/FilteringDatabase.h:95:18: warning: 'handleMessage' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void handleMessage(cMessage* msg);
+                 ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/csimplemodule.h:111:18: note: overridden virtual function is here
+    virtual void handleMessage(cMessage *msg);
+                 ^
+1 warning generated.
+Creating shared library: ../out/clang-release/src/libnesting.so
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+cd simulations && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+19:19:20 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn/omnetpp-5.6.1/lib
+Building...
+inet/applications/base/ApplicationBase.cc
+inet/applications/dhcp/DhcpClient.cc
+inet/applications/base/ApplicationPacketSerializer.cc
+inet/applications/dhcp/DhcpServer.cc
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal errormake[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpServer.o] Error 1
+1 error generated.
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationBase.o] Error 1
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpClient.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpServer.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationBase.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpClient.o' failed
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+Makefile:6: recipe for target 'all' failed
+make: *** [all] Error 2
+"make MODE=release -j4 all" terminated with exit code 2. Build might be incomplete.
+19:19:21 **** Incremental Build of configuration gcc-release for project nesting ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+nesting/ieee8021q/relay/FilteringDatabase.cc
+In file included from nesting/ieee8021q/relay/FilteringDatabase.cc:16:
+./nesting/ieee8021q/relay/FilteringDatabase.h:95:18: warning: 'handleMessage' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void handleMessage(cMessage* msg);
+                 ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/csimplemodule.h:111:18: note: overridden virtual function is here
+    virtual void handleMessage(cMessage *msg);
+                 ^
+1 warning generated.
+Creating shared library: ../out/clang-release/src/libnesting.so
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+cd simulations && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+19:19:44 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn/omnetpp-5.6.1/lib
+Building...
+inet/applications/base/ApplicationPacketSerializer.cc
+inet/applications/base/ApplicationBase.cc
+inet/applications/dhcp/DhcpClient.cc
+inet/applications/dhcp/DhcpServer.cc
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpClient.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpServer.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationBase.o' failed
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpClient.o] Error 1
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpServer.o] Error 1
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationBase.o] Error 1
+make: *** [all] Error 2
+Makefile:6: recipe for target 'all' failed
+"make MODE=release -j4 all" terminated with exit code 2. Build might be incomplete.
+19:19:45 **** Incremental Build of configuration gcc-release for project nesting ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+nesting/ieee8021q/relay/FilteringDatabase.cc
+In file included from nesting/ieee8021q/relay/FilteringDatabase.cc:16:
+./nesting/ieee8021q/relay/FilteringDatabase.h:95:18: warning: 'handleMessage' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void handleMessage(cMessage* msg);
+                 ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/csimplemodule.h:111:18: note: overridden virtual function is here
+    virtual void handleMessage(cMessage *msg);
+                 ^
+1 warning generated.
+Creating shared library: ../out/clang-release/src/libnesting.so
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+cd simulations && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+19:39:00 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn/omnetpp-5.6.1/lib
+Building...
+inet/applications/base/ApplicationBase.cc
+inet/applications/base/ApplicationPacketSerializer.cc
+inet/applications/dhcp/DhcpClient.cc
+inet/applications/dhcp/DhcpServer.cc
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o' failed
+make[1]: *** Waiting for unfinished jobs....
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+1 error generated.
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationBase.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationBase.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpClient.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpClient.o] Error 1
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpServer.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpServer.o] Error 1
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+Makefile:6: recipe for target 'all' failed
+make: *** [all] Error 2
+"make MODE=release -j4 all" terminated with exit code 2. Build might be incomplete.
+19:39:01 **** Incremental Build of configuration gcc-release for project nesting ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+cd simulations && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+05:58:16 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn/omnetpp-5.6.1/lib
+Building...
+inet/applications/base/ApplicationBase.cc
+inet/applications/base/ApplicationPacketSerializer.cc
+inet/applications/dhcp/DhcpClient.cc
+inet/applications/dhcp/DhcpServer.cc
+fatal errorfatal error: : malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+111 error generated.
+ error generated.
+ error generated.
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpServer.o' failed
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpServer.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
+fatal error: malformed or corrupted AST file: 'could not find file '/home/tsn/omnetpp-5.6.1/workspace/inet/src/inet/common/precompiled.h' referenced by AST file 'inet/common/precompiled_release.h.pch''
+1 error generated.
+make[1]: *** [../out/clang-release/src/inet/applications/base/ApplicationBase.o] Error 1
+make[1]: *** [../out/clang-release/src/inet/applications/dhcp/DhcpClient.o] Error 1
+make: *** [all] Error 2
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationPacketSerializer.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/base/ApplicationBase.o' failed
+Makefile:1611: recipe for target '../out/clang-release/src/inet/applications/dhcp/DhcpClient.o' failed
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/inet/src'
+Makefile:6: recipe for target 'all' failed
+"make MODE=release -j4 all" terminated with exit code 2. Build might be incomplete.
+05:58:18 **** Incremental Build of configuration gcc-release for project nesting ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/src'
+cd simulations && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace_NeSTiNg/nesting/simulations'

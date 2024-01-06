@@ -1,0 +1,126 @@
+10:31:10 **** Build of configuration gcc-debug for project nesting-master ****
+make MODE=debug -j8 all 
+cd src && make
+make[1]: Entering directory '/home/tsn/omnetpp-5.6.1/workspace/nesting-master/src'
+MSGC: nesting/common/FlowMetaTag.msg
+MSGC: nesting/linklayer/vlan/EnhancedVlanTag.msg
+MSGC: nesting/linklayer/common/VLANTagDeprecated.msg
+MSGC: nesting/ieee8021q/queue/framePreemption/ExpressFrameTag.msg
+MSGC: nesting/linklayer/framePreemption/PreemptedFrame.msg
+nesting/application/inet/VlanRequester.cc
+nesting/application/ethernet/VlanEtherTrafGen.cc
+nesting/application/ethernet/VlanEtherTrafGenSched.cc
+nesting/application/udpapp/SendDatagramEvent.cc
+nesting/common/ResultFilters.cc
+nesting/application/udpapp/UdpScheduledTrafficGenerator.cc
+nesting/application/udpapp/UdpReactiveApp.cc
+nesting/application/udpapp/DatagramScheduleManager.cc
+In file included from nesting/application/udpapp/UdpReactiveApp.cc:16:
+./nesting/application/udpapp/UdpReactiveApp.h:19:10: fatal error: 'inet/common/INETDefs.h' file not found
+#include "inet/common/INETDefs.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+make[1]: *** [../out/clang-debug/src/nesting/application/udpapp/UdpReactiveApp.o] Error 1
+make[1]: *** Waiting for unfinished jobs....
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/application/udpapp/UdpReactiveApp.o' failed
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/application/udpapp/SendDatagramEvent.o' failed
+In file included from nesting/application/udpapp/SendDatagramEvent.cc:16:
+./nesting/application/udpapp/SendDatagramEvent.h:21:10: fatal error: 'inet/networklayer/common/L3Address.h' file not found
+#include "inet/networklayer/common/L3Address.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
+make[1]: *** [../out/clang-debug/src/nesting/application/udpapp/SendDatagramEvent.o] Error 1
+In file included from In file included from In file included from In file included from nesting/common/ResultFilters.cc:16:
+./nesting/common/ResultFilters.h:29:18: warning: 'nesting::FlowIdFilter::receiveSignal' hides overloaded virtual functions [-Woverloaded-virtual]
+    virtual void receiveSignal(cResultFilter* prev, simtime_t_cref t, cObject* object, cObject* details) override;
+                 ^
+nesting/application/ethernet/VlanEtherTrafGen.cc:16:
+./nesting/application/ethernet/VlanEtherTrafGen.h:21:10: fatal error: 'inet/applications/ethernet/EtherTrafGen.h' file not found
+#include "inet/applications/ethernet/EtherTrafGen.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nesting/application/ethernet/VlanEtherTrafGenSched.cc:16:
+In file included from ./nesting/application/ethernet/VlanEtherTrafGenSched.h:22:
+./nesting/common/schedule/HostScheduleBuilder.h:23:10: fatal error: 'inet/linklayer/ethernet/EtherFrame_m.h' file not found
+#include "inet/linklayer/ethernet/EtherFrame_m.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+nesting/application/udpapp/UdpScheduledTrafficGenerator.cc:16:
+./nesting/application/udpapp/UdpScheduledTrafficGenerator.h:21:10: fatal error: 'inet/applications/base/ApplicationBase.h' file not found
+#include "inet/applications/base/ApplicationBase.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:134:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('bool' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, bool b, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:135:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('long' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, long l, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:136:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('unsigned long' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, unsigned long l, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:137:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('double' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, double d, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:138:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('const omnetpp::SimTime &' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, const SimTime& v, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:139:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('const char *' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, const char *s, cObject *details) override;
+                     ^
+In file included from nesting/common/ResultFilters.cc:16:
+./nesting/common/ResultFilters.h:39:18: warning: 'nesting::SeqNumFilter::receiveSignal' hides overloaded virtual functions [-Woverloaded-virtual]
+    virtual void receiveSignal(cResultFilter* prev, simtime_t_cref t, cObject* object, cObject* details) override;
+                 ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:134:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('bool' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, bool b, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:135:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('long' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, long l, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:136:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('unsigned long' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, unsigned long l, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:137:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('double' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, double d, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:138:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('const omnetpp::SimTime &' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, const SimTime& v, cObject *details) override;
+                     ^
+/home/tsn/omnetpp-5.6.1/include/omnetpp/cresultfilter.h:139:22: note: hidden overloaded virtual function 'omnetpp::cObjectResultFilter::receiveSignal' declared here: type mismatch at 3rd parameter ('const char *' vs 'omnetpp::cObject *')
+        virtual void receiveSignal(cResultFilter *prev, simtime_t_cref t, const char *s, cObject *details) override;
+                     ^
+In file included from nesting/common/ResultFilters.cc:17:
+./nesting/common/FlowMetaTag_m.h:20:10: fatal error: 'inet/common/TagBase_m.h' file not found
+#include "inet/common/TagBase_m.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~~
+2 warnings and 1 error generated.
+nesting/application/inet/VlanRequester.cc:18:10: fatal error: 'inet/common/packet/Packet.h' file not found
+#include "inet/common/packet/Packet.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make[1]: *** [../out/clang-debug/src/nesting/common/ResultFilters.o] Error 1
+1 error generated.
+In file included from nesting/application/udpapp/DatagramScheduleManager.cc:16:
+In file included from ./nesting/application/udpapp/DatagramScheduleManager.h:21:
+./nesting/common/schedule/ScheduleManager.h:25:10: fatal error: 'inet/common/ModuleAccess.h' file not found
+#include "inet/common/ModuleAccess.h"
+         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make[1]: *** [../out/clang-debug/src/nesting/application/inet/VlanRequester.o] Error 1
+1 error generated.
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/common/ResultFilters.o' failed
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/application/inet/VlanRequester.o' failed
+make[1]: *** [../out/clang-debug/src/nesting/application/udpapp/UdpScheduledTrafficGenerator.o] Error 1
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/application/udpapp/UdpScheduledTrafficGenerator.o' failed
+1 error generated.
+make[1]: *** [../out/clang-debug/src/nesting/application/ethernet/VlanEtherTrafGen.o] Error 1
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/application/ethernet/VlanEtherTrafGen.o' failed
+1 error generated.
+make[1]: *** [../out/clang-debug/src/nesting/application/ethernet/VlanEtherTrafGenSched.o] Error 1
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/application/ethernet/VlanEtherTrafGenSched.o' failed
+1 error generated.
+Makefile:145: recipe for target '../out/clang-debug/src/nesting/application/udpapp/DatagramScheduleManager.o' failed
+make[1]: *** [../out/clang-debug/src/nesting/application/udpapp/DatagramScheduleManager.o] Error 1
+make[1]: Leaving directory '/home/tsn/omnetpp-5.6.1/workspace/nesting-master/src'
+Makefile:11: recipe for target 'all' failed
+make: *** [all] Error 2
+"make MODE=debug -j8 all" terminated with exit code 2. Build might be incomplete.
+
+10:31:15 Build Failed. 27 errors, 2 warnings. (took 4s.735ms)
+
