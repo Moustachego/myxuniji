@@ -81,10 +81,11 @@ void ForwardingRelayUnit::processBroadcast(Packet* packet, int arrivalInterfaceI
 
 void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceId) {
     const auto& frame = packet->peekAtFront<EthernetMacHeader>();
-    flow F;
-    F.src = frame->getSrc();                                     
-    F.dst = frame->getDest();
-    std::vector<int> destInterfaces = fdb->getDestInterfaceIds(F, simTime());
+    flow f;
+    f.src = frame->getSrc();
+    f.dst = frame->getDest();
+    std::vector<int> destInterfaces = fdb->getDestInterfaceIds(f, simTime());
+//    std::vector<int> destInterfaces = fdb->getDestInterfaceIds(frame->getDest(), simTime());
 
     if (destInterfaces.size() == 0) {
         EV_INFO << "No configured multicast forwarding entry found for packet "
@@ -111,16 +112,17 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
     }
 }
 
-/* void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId) {
+void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId) {  //这个arrivalInterfaceID是什么东西，下一跳接口ID吗
     //Learning MAC port mappings
-    const auto& frame = packet->peekAtFront<EthernetMacHeader>();               
-    learn(frame->getSrc(), arrivalInterfaceId);                                //这里get了源地址
-    int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());//这里get了目的地址
-    
-    //Identify stream  可以尝试分别获取流的源与目的，源与目的不同则是不同流，源与目的相同则是相同流
-    //但是在这之前要先对流进行ID赋值,创建一个经验库，存储已经处理的流的源与目的，流一进入就查看它的源地址与目的地址，然后与经验库进行对照
-    //对照的结果如果是相同的，那么它们就是相同流，如果不同，就增加一个位置存储流，如果经验库是空的，那么就不用比较直接更新
-    
+    const auto& frame = packet->peekAtFront<EthernetMacHeader>();                 //提取以太网包，并作为帧的形式
+//    learn(frame->getSrc(), arrivalInterfaceId);
+    flow f;                                                                      //定义一个f数据结构，从MAC中获取源地址、目的地址
+    f.src = frame->getSrc();                            //getsrc是一个函数吗
+    f.dst = frame->getDest();
+    learn(f, arrivalInterfaceId);                                               //这个learn有啥用啊，感觉没啥用                             
+    int destInterfaceId = fdb->getDestInterfaceId(f, simTime());                   //确定这个流走这个端口？从fdb中拿这个函数           
+//    int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());
+
     //Routing entry available or not?
     if (destInterfaceId == -1) {
         EV_INFO << "No unicast forwarding entry for packet " << packet->getName()
@@ -132,38 +134,14 @@ void ForwardingRelayUnit::processMulticast(Packet* packet, int arrivalInterfaceI
         packet->addTagIfAbsent<InterfaceReq>()->setInterfaceId(destInterfaceId);
         send(packet, gate("ifOut"));
     }
-} */
+}
 
- void ForwardingRelayUnit::processUnicast(Packet* packet, int arrivalInterfaceId) {
-    //Learning MAC port mappings
-    const auto& frame = packet->peekAtFront<EthernetMacHeader>();              //首先把包取下来，用帧的形式保存           
-    //learn(frame->getSrc(), arrivalInterfaceId);                                //这里get了源地址
-    //int destInterfaceId = fdb->getDestInterfaceId(frame->getDest(), simTime());//这里get了目的地址 fdb到底表示什么意思
-    
-    //这里从包里取下源地址与目的地址
-    flow F;                                                  
-    F.src = frame->getSrc();                                  ///这里是getsrc，我直接用来getid是不是没定义过；getSrc()是不是要重写成getid（）
-    F.dst = frame->getDest();
-    learn( F , arrivalInterfaceId);                           //这个learn里面的处理过程还有点不太懂；
-    int destInterfaceId = fdb->getDestInterfaceId( F , simTime());    
-
-    //Routing entry available or not?
-    if (destInterfaceId == -1) {                                    //转发动作
-        EV_INFO << "No unicast forwarding entry for packet " << packet->getName()
-                << " found. Falling back to broadcast!" << std::endl;
-        processBroadcast(packet, arrivalInterfaceId);
-    } else {
-        EV_INFO << "Forwarding unicast packet " << packet->getName()
-                << " to interface " << destInterfaceId << std::endl;
-        packet->addTagIfAbsent<InterfaceReq>()->setInterfaceId(destInterfaceId);
-        send(packet, gate("ifOut"));
-    }
-} 
-
-void ForwardingRelayUnit::learn(flow F, int arrivalInterfaceId)
+//void ForwardingRelayUnit::learn(MacAddress srcAddr, int arrivalInterfaceId)
+void ForwardingRelayUnit::learn(flow f, int arrivalInterfaceId)
 {
-    fdb->insert( F , simTime(), arrivalInterfaceId);                         //这个insert函数没找到 
+    EV_INFO << "Do not learn!";
+//    fdb->insert(f, simTime(), arrivalInterfaceId);
+//    fdb->insert(srcAddr, simTime(), arrivalInterfaceId);
 }
 
 } // namespace nesting
-

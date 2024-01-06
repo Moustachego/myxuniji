@@ -35,18 +35,19 @@ namespace nesting {
  */
 class ForwardingRelayUnit: public cSimpleModule {
 private:
-    FilteringDatabase* fdb;                                       //原来是filterDatabase的意思 ，存储一个数据库
-    int numberOfPorts;                                            //存储一个端口号 
+    FilteringDatabase* fdb;
+    int numberOfPorts;
     simtime_t fdbAgingThreshold = 1000; //TODO: Create parameter for filtering database aging
     IInterfaceTable *ifTable;
 protected:
     virtual void initialize(int stage) override;
-    virtual int numInitStages() const override { return NUM_INIT_STAGES; }   ///测试提交
+    virtual int numInitStages() const override { return NUM_INIT_STAGES; }
     virtual void handleMessage(cMessage* msg);
     virtual void processBroadcast(Packet* packet, int arrivalInterfaceId);
     virtual void processMulticast(Packet* packet, int arrivalInterfaceId);
     virtual void processUnicast(Packet* packet, int arrivalInterfaceId);
-    virtual void learn(flow F, int arrivalInterfaceId);
+    virtual void learn(flow f, int arrivalInterfaceId);
+//    virtual void learn(MacAddress srcAddr, int arrivalInterfaceId);
 
 public:
     //TODO: Fix filtering database aging parameter!
